@@ -1,0 +1,15 @@
+#toolbar {
+  height: 5vh;
+}
+.CodeMirror {
+  height: 50vh;
+}
+
+#console,
+#editor {
+  border-bottom: solid 1px #CCC;
+}
+
+#console {
+  height: 45vh;
+}
