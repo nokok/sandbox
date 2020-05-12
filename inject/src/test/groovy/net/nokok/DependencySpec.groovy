@@ -1,7 +1,7 @@
 package net.nokok
 
 import net.nokok.inject.Key
-import net.nokok.inject.internal.Dependencies
+import net.nokok.inject.internal.KeyDependencies
 import spock.lang.Specification
 
 class DependencySpec extends Specification {
@@ -15,7 +15,7 @@ class DependencySpec extends Specification {
     }
 
     def "build dependency"() {
-        def d = Dependencies.find(clazz)
+        def d = KeyDependencies.find(clazz)
 
         expect:
         d.dependencies == dependencies

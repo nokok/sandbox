@@ -4,7 +4,7 @@ import net.nokok.inject.Injector;
 
 import static net.nokok.inject.Injector.syntax.bind;
 
-public class Library {
+public class Main {
 
     public static void main(String[] args) {
         Injector injector = new Injector(
@@ -20,14 +20,6 @@ public class Library {
 }
 
 interface Base {
-
-}
-
-interface A {
-
-}
-
-class AImpl implements A {
 
 }
 

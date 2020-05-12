@@ -36,10 +36,10 @@ class InjectorSpec extends Specification {
                 bind(B).to(B)
         )
         A a = injector.getInstance(A)
-        C c = (C) a
 
         expect:
+        a instanceof C
+        C c = (C) a
         c.b != null
-
     }
 }

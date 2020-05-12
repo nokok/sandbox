@@ -9,15 +9,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Dependencies<T> {
+public class KeyDependencies<T> {
     private final Key<T> key;
     private final List<Key<?>> dependencies;
 
-    private Dependencies(Class<T> clazz) {
+    private KeyDependencies(Class<T> clazz) {
         this.key = Key.of(clazz);
-        Constructor<?>[] constructors = clazz.getConstructors();
+        Constructor<?>[] constructors = clazz.getDeclaredConstructors();
         if (constructors.length == 0) {
-            throw new IllegalArgumentException("コンストラクタが見つかりませんでした");
+            throw new IllegalArgumentException("コンストラクタが見つかりませんでした : " + clazz.getName());
         }
         Constructor<?> constructor;
         if (constructors.length == 1) {
@@ -28,7 +28,8 @@ public class Dependencies<T> {
                     .findFirst()
                     .orElseThrow(() -> new IllegalArgumentException("コンストラクタが複数見つかりましたが、Injectアノテーションが見つかりません"));
         }
-        this.dependencies = Arrays.stream(constructor.getParameters()).map(Parameter::getType).map(Key::of).collect(Collectors.toList());
+        Parameter[] parameters = constructor.getParameters();
+        this.dependencies = Arrays.stream(parameters).map(Parameter::getParameterizedType).map(Key::of).collect(Collectors.toList());
     }
 
     public Key<T> getKey() {
@@ -39,7 +40,7 @@ public class Dependencies<T> {
         return dependencies;
     }
 
-    public static <T> Dependencies<T> find(Class<T> clazz) {
-        return new Dependencies<>(clazz);
+    public static <T> KeyDependencies<T> find(Class<T> clazz) {
+        return new KeyDependencies<>(clazz);
     }
 }

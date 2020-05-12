@@ -1,22 +1,22 @@
 package net.nokok.inject;
 
 
-import net.nokok.inject.internal.Dependencies;
+import net.nokok.inject.internal.KeyDependencies;
 
 public class Binding<Bind, Dep> {
     private final Key<Bind> key;
-    private final Dependencies<Dep> dependencies;
+    private final KeyDependencies<Dep> keyDependencies;
 
-    public Binding(Key<Bind> key, Dependencies<Dep> dependencies) {
+    public Binding(Key<Bind> key, KeyDependencies<Dep> keyDependencies) {
         this.key = key;
-        this.dependencies = dependencies;
+        this.keyDependencies = keyDependencies;
     }
 
     public Key<Bind> getKey() {
         return key;
     }
 
-    public Dependencies<Dep> getDependencies() {
-        return dependencies;
+    public KeyDependencies<Dep> getKeyDependencies() {
+        return keyDependencies;
     }
 }
