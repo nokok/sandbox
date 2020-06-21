@@ -1,0 +1,7 @@
+commonLabels:
+  app: sandbox
+  visualize: "true"
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
