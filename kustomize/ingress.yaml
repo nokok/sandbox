@@ -1,14 +1,11 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: test-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: hello-ingress
 spec:
   rules:
   - http:
       paths:
-      - path: /
-        backend:
-          serviceName: sandbox
-          servicePort: 50000
+      - backend:
+          serviceName: hello-svc
+          servicePort: 80
