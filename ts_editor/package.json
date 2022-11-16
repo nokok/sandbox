@@ -16,7 +16,7 @@
     "popper.js": "^1.14.1",
     "puppeteer": "^1.2.0",
     "reset-css": "^3.0.0",
-    "to-string-loader": "^1.1.5",
+    "to-string-loader": "^1.2.0",
     "vue": "^2.5.16",
     "vue-class-component": "^6.2.0"
   },
